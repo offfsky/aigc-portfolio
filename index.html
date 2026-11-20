@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>邵纹浩 · AIGC 影像作品集</title>
+  <meta name="description" content="邵纹浩的生成式影像作品集。悬疑短片、奇幻动画、生活音乐影像、产品广告，以及三条 ComfyUI 本地制作流程。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="邵纹浩 · AIGC 影像作品集">
+  <meta property="og:description" content="从短片、广告到本地生成流程，看看画面是怎么做出来的。">
+  <meta property="og:image" content="media/coffee-after.webp">
+  <link rel="icon" href="media/coffee-after.webp" type="image/webp">
+  <link rel="stylesheet" href="style.css?v=4">
+  <script src="films.js?v=4" defer></script>
+  <script src="site.js?v=4" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到内容</a>
+  <header class="masthead" id="top">
+    <div class="wrap top-row">
+      <a class="signature" href="#top" aria-label="邵纹浩，作品集首页">
+        <span class="signature-mark" aria-hidden="true"></span>
+        <span><strong>邵纹浩</strong><small>SHAO WENHAO</small></span>
+      </a>
+      <nav aria-label="作品集导航">
+        <a href="#works">代表作品</a>
+        <a href="#assets">角色设定</a>
+        <a href="#lab">制作流程</a>
+        <a href="#about">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span aria-hidden="true"></span> AIGC 视频创作</p>
+        <h1 id="hero-title">影像<span class="hero-title-second">作品集<span class="hero-period">.</span></span></h1>
+        <p class="hero-intro">用文字讲故事，用生成式工具拓展影像表达。从悬疑短片、奇幻动画，到生活音乐影像和产品广告。</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#works">浏览代表作品</a>
+          <a class="inline-link" href="#assets">看人物设定</a>
+        </div>
+      </div>
+      <div class="hero-board" aria-label="作品画面预览">
+        <button type="button" class="hero-frame hero-tall" data-case="coffee" aria-label="查看白瓷杯产品视觉实验">
+          <img src="media/coffee-after.webp" width="480" height="848" fetchpriority="high" alt="暖色石台上一只白瓷杯，窗光从侧面落下">
+          <span class="frame-title">白瓷杯 <small>商品换景</small></span>
+        </button>
+        <button type="button" class="hero-frame hero-cat" data-case="cat" aria-label="查看猫的魔法冒险谭">
+          <img src="media/films/cat-cover.webp" width="1364" height="768" alt="手绘风街道上，一个少女和一只猫相遇">
+          <span class="frame-title">猫的魔法冒险谭</span>
+        </button>
+        <button type="button" class="hero-frame hero-rhythm" data-case="rhythm" aria-label="查看 Same Rhythm">
+          <img src="media/films/rhythm-cover.webp" width="1600" height="898" alt="阳光穿过树叶，两位路人在建筑前相遇">
+          <span class="frame-title">Same Rhythm</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="works" class="works-section" aria-labelledby="works-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow eyebrow-text">SELECTED FILMS</p><h2 id="works-title">代表作品</h2></div>
+          <p>点击封面，在这里观看短片。</p>
+        </div>
+        <div class="works-grid">
+          <article class="work-card">
+            <button type="button" class="work-cover" data-case="where" aria-label="播放《你在哪》">
+              <img src="media/films/where-cover.webp" width="1600" height="900" alt="你在哪短片封面，黑色背景上的斑驳字样" loading="lazy">
+              <span class="cover-action" data-action-label="where">播放短片</span>
+            </button>
+            <div class="work-info"><div><p class="work-genre">悬疑短片</p><h3>你在哪</h3></div>
+            <p>用光影、室内异动和环境声，让一个寻常的空间逐渐失去安全感。</p></div>
+          </article>
+          <article class="work-card">
+            <button type="button" class="work-cover" data-case="cat" aria-label="播放《猫的魔法冒险谭》">
+              <img src="media/films/cat-cover.webp" width="1364" height="768" alt="猫的魔法冒险谭封面" loading="lazy">
+              <span class="cover-action" data-action-label="cat">播放短片</span>
+            </button>
+            <div class="work-info"><div><p class="work-genre">奇幻动画</p><h3>猫的魔法冒险谭</h3></div>
+            <p>会说话的魔法猫与少女短暂相遇，在水彩风的街巷里继续各自的旅程。</p></div>
+          </article>
+          <article class="work-card">
+            <button type="button" class="work-cover" data-case="rhythm" aria-label="播放 Same Rhythm">
+              <img src="media/films/rhythm-cover.webp" width="1600" height="898" alt="Same Rhythm 的街头相遇画面" loading="lazy">
+              <span class="cover-action" data-action-label="rhythm">播放短片</span>
+            </button>
+            <div class="work-info"><div><p class="work-genre">生活音乐影像</p><h3 lang="en">Same Rhythm</h3></div>
+            <p>自然光、街头日常与音乐节拍，让陌生人的生活在一个瞬间交错。</p></div>
+          </article>
+          <article class="work-card">
+            <button type="button" class="work-cover" data-case="eifi" aria-label="播放 EIFI 美妆产品 AI 广告">
+              <img src="media/films/eifi-cover.webp" width="854" height="480" alt="EIFI 美妆产品广告画面，两位人物站在展台旁" loading="lazy">
+              <span class="cover-action" data-action-label="eifi">播放广告</span>
+            </button>
+            <div class="work-info"><div><p class="work-genre">产品创意广告</p><h3>EIFI 美妆产品 AI 广告</h3></div>
+            <p>为面霜、精华水与舒缓喷雾设定角色、场景和分镜，用视觉反差表现卖点。</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="assets" class="asset-section" aria-labelledby="assets-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow eyebrow-text">CHARACTER DESIGN</p><h2 id="assets-title">角色与美术设定</h2></div>
+          <p>点开设定稿，可以放大看面部、服装和造型细节。</p>
+        </div>
+        <article class="asset-project" id="assets-cat" data-assets-for="cat">
+          <header class="asset-heading"><h3>猫的魔法冒险谭</h3><button type="button" class="asset-play" data-case="cat">观看动画</button></header>
+          <div class="role-grid"></div>
+          <details class="extra-art"><summary>查看表情与场景设定</summary><div class="extra-grid"></div></details>
+        </article>
+        <article class="asset-project" id="assets-eifi" data-assets-for="eifi">
+          <header class="asset-heading"><h3>EIFI 美妆产品 AI 广告</h3><button type="button" class="asset-play" data-case="eifi">观看广告</button></header>
+          <div class="role-grid"></div>
+          <details class="extra-art"><summary>查看产品角色与场景设定</summary><div class="extra-grid"></div></details>
+        </article>
+      </div>
+    </section>
+
+    <section id="lab" class="lab-section" aria-labelledby="lab-title">
+      <div class="wrap">
+        <div class="section-head lab-head">
+          <div><p class="eyebrow eyebrow-text">COMFYUI CASE NOTES</p><h2 id="lab-title">制作流程</h2></div>
+          <p>电商换景、角色图生视频与人物 LoRA。点开节点截图，可以查看每个案例的输入、生成设置和输出。</p>
+        </div>
+        <article class="coffee-case">
+          <div class="case-copy">
+            <p class="lab-type">电商视觉</p>
+            <h3>给白瓷杯<br>换个布景。</h3>
+            <p>从素色商品图出发，为同一款白瓷杯换上暖色石台与斜窗光。拖动滑块，可以对照素材与生成画面。</p>
+            <ol class="steps" aria-label="商品换景流程">
+              <li>商品图</li><li>抠图与场景生成</li><li>主图与动效</li>
+            </ol>
+            <div class="case-actions">
+              <button type="button" class="btn btn-accent" data-case="coffee">看 2 秒展示</button>
+              <button type="button" class="shot-action" data-graph="coffee">看工作流截图</button>
+            </div>
+            <p class="case-footnote">主图由工作流生成，展示视频基于成图做轻推镜头。</p>
+          </div>
+          <div class="compare-shell">
+            <div class="compare" style="--split: 47%">
+              <img class="compare-after" src="media/coffee-after.webp" alt="换景后，白瓷杯在暖棕色墙面和石台前" width="480" height="848" loading="lazy">
+              <img class="compare-before" src="media/coffee-before.webp" alt="换景前，素色背景上的白色陶瓷杯" width="480" height="854" loading="lazy">
+              <div class="compare-divider" aria-hidden="true"><span></span></div>
+              <span class="compare-label before-tag">原始素材</span><span class="compare-label after-tag">工作流输出</span>
+              <input type="range" name="comparison" aria-label="对比原始素材与生成主图" min="7" max="93" value="47">
+            </div>
+          </div>
+        </article>
+
+        <div class="lab-grid">
+          <article class="lab-card">
+            <button type="button" class="lab-cover" data-case="drama" data-playable="yes" aria-label="播放真人剧反应镜头">
+              <img src="media/drama-reaction.webp" alt="蓝色针织衫的男子坐在木墙前，手里端着白杯" width="640" height="384" loading="lazy">
+              <span class="cover-action">播放 2 秒镜头</span>
+            </button>
+            <div class="lab-body"><p class="lab-type">首帧图生视频</p><h3>真人剧镜头</h3>
+              <p>男子端着白杯望向画外。用角色首帧和动作提示生成一段安静的近景反应镜头。</p>
+              <button type="button" class="shot-action" data-graph="drama">看工作流截图</button>
+            </div>
+          </article>
+          <article class="lab-card">
+            <button type="button" class="lab-cover lab-lora" data-case="lora" aria-label="查看人物 LoRA 工作流">
+              <img src="media/lora-portrait.webp" alt="使用试训 LoRA 生成的虚构人物验证图" width="512" height="512" loading="lazy">
+              <span class="cover-action">查看训练验证</span>
+            </button>
+            <div class="lab-body"><p class="lab-type">角色训练</p><h3>人物 LoRA</h3>
+              <p>整理同一角色的图片和标注，用 SD 1.5 训练权重，输出验证图和损失曲线。</p>
+              <button type="button" class="shot-action" data-graph="lora">看工作流截图</button>
+            </div>
+          </article>
+        </div>
+        <div class="workflow-gallery" id="workflow-shots" aria-labelledby="workflow-title">
+          <h3 id="workflow-title">工作流截图</h3>
+          <div class="workflow-grid">
+            <button type="button" class="workflow-card" data-graph="coffee" aria-label="查看白瓷杯 · 商品换景的两张节点截图">
+              <img src="media/graphs/coffee-thumb.webp" width="768" height="430" loading="lazy" alt="商品抠图与布景生成的 ComfyUI 节点画布">
+              <span class="workflow-caption"><strong>白瓷杯 · 商品换景</strong><span>全景与局部</span></span>
+            </button>
+            <button type="button" class="workflow-card" data-graph="drama" aria-label="查看真人剧 · 端杯静听的两张节点截图">
+              <img src="media/graphs/drama-thumb.webp" width="768" height="430" loading="lazy" alt="角色首帧与镜头采样的 ComfyUI 节点画布">
+              <span class="workflow-caption"><strong>真人剧 · 端杯静听</strong><span>全景与局部</span></span>
+            </button>
+            <button type="button" class="workflow-card" data-graph="lora" aria-label="查看人物 LoRA · 训练验证的两张节点截图">
+              <img src="media/graphs/lora-thumb.webp" width="768" height="430" loading="lazy" alt="训练参数与权重输出的 ComfyUI 节点画布">
+              <span class="workflow-caption"><strong>人物 LoRA · 训练验证</strong><span>全景与局部</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="wrap about-section" aria-labelledby="about-title">
+      <div><p class="eyebrow eyebrow-text">BEHIND THE FRAME</p><h2 id="about-title">邵纹浩</h2><p class="about-role">AIGC 视频创作 / AI 内容制作</p></div>
+      <div class="about-copy">
+        <p>我关注构图、光线和节奏怎样改变一个故事的感受。制作时，从创意方向和分镜入手，结合本地生成、云端工具与剪辑，完成风格一致的画面。</p>
+        <dl class="tool-groups" aria-label="常用创作工具">
+          <div><dt>图像与工作流</dt><dd><ul class="tool-list"><li>ComfyUI</li><li>SDXL</li><li>Midjourney</li><li>GPT Image</li></ul></dd></div>
+          <div><dt>视频生成</dt><dd><ul class="tool-list"><li>可灵</li><li>即梦</li><li>Seedance</li></ul></dd></div>
+          <div><dt>剪辑与后期</dt><dd><ul class="tool-list"><li>剪映</li><li>DaVinci Resolve</li><li>Photoshop</li></ul></dd></div>
+          <div><dt>创作辅助</dt><dd><ul class="tool-list"><li>Qwen</li><li>Codex</li></ul></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot-row"><span>邵纹浩 · AIGC 影像作品集</span><a href="#top">回到顶部</a></div></footer>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-shell">
+      <button type="button" class="viewer-close" aria-label="关闭作品预览">×</button>
+      <div id="viewer-media" class="viewer-media"></div>
+      <div class="viewer-info"><p id="viewer-kind" class="eyebrow eyebrow-text"></p><h2 id="viewer-title"></h2><p id="viewer-summary"></p><div id="viewer-links"></div></div>
+    </div>
+  </dialog>
+  <dialog id="art-viewer" class="art-viewer" aria-labelledby="art-title">
+    <div class="art-shell">
+      <button type="button" class="viewer-close" aria-label="关闭大图">×</button>
+      <div class="art-canvas"><img id="art-image" alt=""></div>
+      <div class="art-meta" aria-live="polite">
+        <div><p id="art-project" class="art-project-name"></p><h2 id="art-title"></h2><p id="art-description"></p></div>
+        <a id="art-full" class="inline-link" target="_blank" rel="noopener">打开大图</a>
+      </div>
+      <div class="art-controls">
+        <button type="button" data-art-step="-1">上一张</button><span id="art-position"></span><button type="button" data-art-step="1">下一张</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
