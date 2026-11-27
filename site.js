@@ -52,6 +52,24 @@ const cases = {
   }
 };
 
+const heroStill = document.querySelector(".feature-image");
+const heroPlay = document.querySelector(".feature-play");
+const featureTabs = document.querySelectorAll(".film-tab");
+for (const tab of featureTabs) {
+  tab.addEventListener("click", () => {
+    if (tab.getAttribute("aria-pressed") === "true") return;
+    for (const other of featureTabs) other.setAttribute("aria-pressed", String(other === tab));
+    const title = tab.querySelector("strong").textContent;
+    heroStill.src = tab.dataset.still;
+    heroStill.alt = tab.dataset.alt;
+    heroStill.dataset.feature = tab.dataset.feature;
+    heroPlay.dataset.case = tab.dataset.feature;
+    heroPlay.setAttribute("aria-label", "播放" + title);
+    heroPlay.querySelector("strong").textContent = title;
+    heroPlay.querySelector("small").textContent = tab.querySelector("small").textContent;
+  });
+}
+
 for (const marker of document.querySelectorAll("[data-action-label]")) {
   const film = films[marker.dataset.actionLabel];
   if (film?.video) {

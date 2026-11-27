@@ -9,11 +9,11 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="邵纹浩 · AIGC 影像作品集">
   <meta property="og:description" content="从短片、广告到本地生成流程，看看画面是怎么做出来的。">
-  <meta property="og:image" content="media/coffee-after.webp">
-  <link rel="icon" href="media/coffee-after.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css?v=4">
+  <meta property="og:image" content="https://offfsky.github.io/aigc-portfolio/media/films/rhythm-still.jpg">
+  <link rel="icon" href="media/films/rhythm-still.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css?v=6">
   <script src="films.js?v=4" defer></script>
-  <script src="site.js?v=4" defer></script>
+  <script src="site.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到内容</a>
@@ -27,36 +27,36 @@
         <a href="#works">代表作品</a>
         <a href="#assets">角色设定</a>
         <a href="#lab">制作流程</a>
-        <a href="#about">关于</a>
+        <a href="#about">关于我</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span aria-hidden="true"></span> AIGC 视频创作</p>
-        <h1 id="hero-title">影像<span class="hero-title-second">作品集<span class="hero-period">.</span></span></h1>
-        <p class="hero-intro">用文字讲故事，用生成式工具拓展影像表达。从悬疑短片、奇幻动画，到生活音乐影像和产品广告。</p>
-        <div class="hero-actions">
-          <a class="btn btn-dark" href="#works">浏览代表作品</a>
-          <a class="inline-link" href="#assets">看人物设定</a>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-stage" id="featured-still">
+        <img class="feature-image" src="media/films/rhythm-still.jpg" width="854" height="480" fetchpriority="high" alt="《Same Rhythm》剧照，戴着白色耳机的女子在阳光下望向画外">
+        <div class="wrap hero-layout">
+          <div class="hero-copy">
+            <p class="hero-kicker"><span aria-hidden="true"></span>AIGC 视频创作</p>
+            <h1 id="hero-title" aria-label="影像作品集"><span>影像</span><span class="portfolio-word" lang="en" aria-hidden="true">Portfolio<span>.</span></span></h1>
+            <p class="hero-intro">我是邵纹浩，做 AIGC 短片和广告。我习惯先用分镜定下景别、光线和节奏，再用 ComfyUI 和云端视频工具生成镜头，最后剪辑成片。</p>
+            <a class="browse-link" href="#works">浏览代表作品 <span aria-hidden="true">↘</span></a>
+          </div>
+          <button class="feature-play" type="button" data-case="rhythm" aria-label="播放 Same Rhythm"><span class="play-circle" aria-hidden="true">▶</span><span class="feature-caption"><small>生活音乐影像</small><strong>Same Rhythm</strong></span></button>
         </div>
       </div>
-      <div class="hero-board" aria-label="作品画面预览">
-        <button type="button" class="hero-frame hero-tall" data-case="coffee" aria-label="查看白瓷杯产品视觉实验">
-          <img src="media/coffee-after.webp" width="480" height="848" fetchpriority="high" alt="暖色石台上一只白瓷杯，窗光从侧面落下">
-          <span class="frame-title">白瓷杯 <small>商品换景</small></span>
+      <div class="feature-strip"><div class="wrap feature-list" role="group" aria-label="选择首页作品">
+        <button type="button" class="film-tab" data-feature="rhythm" data-still="media/films/rhythm-still.jpg" data-alt="《Same Rhythm》剧照，戴着白色耳机的女子在阳光下望向画外" aria-pressed="true" aria-controls="featured-still">
+          <img src="media/films/rhythm-still.jpg" width="85" height="48" alt=""><span><small>生活音乐影像</small><strong>Same Rhythm</strong></span>
         </button>
-        <button type="button" class="hero-frame hero-cat" data-case="cat" aria-label="查看猫的魔法冒险谭">
-          <img src="media/films/cat-cover.webp" width="1364" height="768" alt="手绘风街道上，一个少女和一只猫相遇">
-          <span class="frame-title">猫的魔法冒险谭</span>
+        <button type="button" class="film-tab" data-feature="cat" data-still="media/films/cat-still.jpg" data-alt="《猫的魔法冒险谭》剧照，虎斑猫坐在石板街巷的光影里" aria-pressed="false" aria-controls="featured-still">
+          <img src="media/films/cat-still.jpg" width="85" height="48" alt=""><span><small>奇幻动画</small><strong>猫的魔法冒险谭</strong></span>
         </button>
-        <button type="button" class="hero-frame hero-rhythm" data-case="rhythm" aria-label="查看 Same Rhythm">
-          <img src="media/films/rhythm-cover.webp" width="1600" height="898" alt="阳光穿过树叶，两位路人在建筑前相遇">
-          <span class="frame-title">Same Rhythm</span>
+        <button type="button" class="film-tab" data-feature="eifi" data-still="media/films/eifi-cover.webp" data-alt="EIFI 美妆产品 AI 广告剧照，女主与导购在展台两侧交谈" aria-pressed="false" aria-controls="featured-still">
+          <img src="media/films/eifi-cover.webp" width="85" height="48" alt=""><span><small>产品创意广告</small><strong>EIFI 美妆广告</strong></span>
         </button>
-      </div>
+      </div></div>
     </section>
 
     <section id="works" class="works-section" aria-labelledby="works-title">
@@ -197,7 +197,8 @@
     <section id="about" class="wrap about-section" aria-labelledby="about-title">
       <div><p class="eyebrow eyebrow-text">BEHIND THE FRAME</p><h2 id="about-title">邵纹浩</h2><p class="about-role">AIGC 视频创作 / AI 内容制作</p></div>
       <div class="about-copy">
-        <p>我关注构图、光线和节奏怎样改变一个故事的感受。制作时，从创意方向和分镜入手，结合本地生成、云端工具与剪辑，完成风格一致的画面。</p>
+        <p>我有摄影基础，喜欢用光影和镜头节奏讲故事。做《你在哪》时，我用环境声和画外的动静制造悬念。做 EIFI 美妆广告时，我先梳理产品卖点，再设计角色、场景和分镜，让观众能从画面里看懂产品。</p>
+        <p>2025 年 11 月至 2026 年 8 月，我在厦门菠萝头科技有限公司担任 AIGC 生成师。我用提示词、LoRA 微调和 ControlNet 批量生成并精修角色卡牌，也搭建素材库、制定审核标准，负责 AIGC 视频从生成到成片的制作。</p>
         <dl class="tool-groups" aria-label="常用创作工具">
           <div><dt>图像与工作流</dt><dd><ul class="tool-list"><li>ComfyUI</li><li>SDXL</li><li>Midjourney</li><li>GPT Image</li></ul></dd></div>
           <div><dt>视频生成</dt><dd><ul class="tool-list"><li>可灵</li><li>即梦</li><li>Seedance</li></ul></dd></div>
