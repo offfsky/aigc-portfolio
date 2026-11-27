@@ -84,8 +84,6 @@ const detailLinks = document.querySelector("#viewer-links");
 const closeButton = dialog.querySelector(".viewer-close");
 const requestedCase = new URLSearchParams(location.search).get("watch");
 let returnFocus = null;
-let videoRequest = null;
-let videoUrl = "";
 
 function makeImage(src, alt, wide = false) {
   const img = document.createElement("img");
@@ -96,50 +94,11 @@ function makeImage(src, alt, wide = false) {
 }
 
 function releasePlayer() {
-  videoRequest?.abort();
-  videoRequest = null;
   const video = media.querySelector("video");
   if (video) {
     video.pause();
     video.removeAttribute("src");
     video.load();
-  }
-  if (videoUrl) URL.revokeObjectURL(videoUrl);
-  videoUrl = "";
-}
-
-async function loadPlayer(video, project) {
-  const controller = new AbortController();
-  videoRequest = controller;
-  const status = document.createElement("p");
-  status.className = "player-status";
-  status.setAttribute("role", "status");
-  status.textContent = "正在载入影片…";
-  media.append(status);
-  try {
-    // The static host returns the whole MP4. A local blob gives browsers a seekable source.
-    const response = await fetch(assetUrl(project.video), {signal: controller.signal});
-    if (!response.ok) throw new Error("Media request failed");
-    const bytes = await response.blob();
-    if (controller.signal.aborted) return;
-    videoUrl = URL.createObjectURL(bytes.type === "video/mp4" ? bytes : new Blob([bytes], {type: "video/mp4"}));
-    video.src = videoUrl;
-    status.remove();
-    video.controls = true;
-    await video.play();
-  } catch (error) {
-    if (controller.signal.aborted || error.name === "AbortError") return;
-    video.controls = true;
-    if (!video.hasAttribute("src")) video.src = assetUrl(project.video);
-    if (error.name === "NotAllowedError") {
-      status.textContent = "点击播放器的播放键开始观看。";
-      media.append(status);
-      video.addEventListener("playing", () => status.remove(), {once: true});
-    } else {
-      status.textContent = "可点击播放器的播放键重试。";
-      media.append(status);
-      video.addEventListener("playing", () => status.remove(), {once: true});
-    }
   }
 }
 
@@ -155,11 +114,12 @@ function openCase(id, trigger) {
   detailLinks.replaceChildren();
   if (project.video) {
     const video = document.createElement("video");
-    video.controls = false;
+    video.controls = true;
     video.playsInline = true;
     video.preload = "metadata";
     video.poster = assetUrl(project.poster);
     video.setAttribute("aria-label", project.title);
+    video.src = assetUrl(project.preview || project.video);
     media.append(video);
     video.addEventListener("error", () => {
       if (!media.contains(video) || !video.hasAttribute("src")) return;
@@ -190,6 +150,7 @@ function openCase(id, trigger) {
     detailLinks.append(graphButton);
   }
   const links = [...(project.links ?? [])];
+  if (project.preview) links.unshift(["打开原画质视频", project.video]);
   if (project.video && id !== requestedCase) links.unshift(["单独打开影片", "?watch=" + id]);
   if (project.art) links.unshift(["查看本片角色设定", "#assets-" + id]);
   for (const [label, href, download] of links) {
@@ -197,7 +158,7 @@ function openCase(id, trigger) {
     a.textContent = label;
     a.href = href.startsWith("media/") ? assetUrl(href) : href;
     if (download) a.download = "";
-    if (href.startsWith("https://") || href.startsWith("?watch=")) {
+    if (href === project.video || href.startsWith("https://") || href.startsWith("?watch=")) {
       a.target = "_blank";
       a.rel = "noopener noreferrer";
     }
@@ -214,7 +175,17 @@ function openCase(id, trigger) {
   dialog.showModal();
   closeButton.focus();
   const player = media.querySelector("video");
-  if (player) loadPlayer(player, project);
+  if (player) {
+    player.play().catch(error => {
+      if (error.name !== "NotAllowedError" || !media.contains(player)) return;
+      const hint = document.createElement("p");
+      hint.className = "player-status";
+      hint.setAttribute("role", "status");
+      hint.textContent = "点击播放器开始观看。";
+      media.append(hint);
+      player.addEventListener("playing", () => hint.remove(), {once: true});
+    });
+  }
 }
 
 for (const trigger of document.querySelectorAll("button[data-case]")) {
@@ -285,13 +256,13 @@ for (const group of document.querySelectorAll("[data-assets-for]")) {
     card.setAttribute("aria-label", "放大查看" + item.title + "的" + item.detail);
     const frame = document.createElement("span");
     frame.className = "art-frame";
-    const img = makeImage("media/art/" + item.id + "-640.webp", item.alt);
+    const img = document.createElement("img");
+    img.alt = item.alt;
     img.loading = "lazy";
     img.decoding = "async";
     img.width = item.width;
     img.height = item.height;
-    img.srcset = assetUrl("media/art/" + item.id + "-640.webp") + " 640w, " + assetUrl("media/art/" + item.id + ".webp") + " " + item.width + "w";
-    img.sizes = index < 2 ? "(max-width: 680px) 92vw, (max-width: 1270px) 46vw, 584px" : "(max-width: 680px) 43vw, 280px";
+    img.src = assetUrl("media/art/" + item.id + "-640.webp");
     frame.append(img);
     const caption = document.createElement("span");
     caption.className = "art-caption";
